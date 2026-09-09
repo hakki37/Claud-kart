@@ -15,14 +15,8 @@ jobs:
           flutter-version: '3.35.4'
           channel: stable
           cache: true
-      - name: Prepare Flutter structure
-        run: |
-          mkdir -p lib
-          cp main.dart lib/main.dart
-          cp config.dart lib/config.dart
-          flutter create --platforms=android .
-      - name: Apply reference homepage UI
-        run: python3 scripts/reference_home_ui.py
+      - name: Prepare Android
+        run: flutter create --platforms=android .
       - name: Dependencies
         run: flutter pub get
       - name: Build APK
