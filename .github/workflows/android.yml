@@ -16,7 +16,18 @@ jobs:
           channel: stable
           cache: true
       - name: Prepare Android
-        run: flutter create --platforms=android .
+        run: |
+          flutter create --platforms=android .
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('android/app/src/main/AndroidManifest.xml')
+          s = p.read_text()
+          permission = '<uses-permission android:name="android.permission.INTERNET" />'
+          if permission not in s:
+              s = s.replace('<manifest ', '<manifest ' + permission, 1)
+              p.write_text(s)
+          print(p.read_text())
+          PY
       - name: Dependencies
         run: flutter pub get
       - name: Build APK
