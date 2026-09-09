@@ -1,5 +1,8 @@
 class AppConfig {
   static const supabaseUrl = 'https://bwkfehgzupbewfeovfnb.supabase.co';
   static const supabasePublishableKey =
-      String.fromEnvironment('SUPABASE_PUBLISHABLE_KEY');
+      String.fromEnvironment(
+        'SUPABASE_PUBLISHABLE_KEY',
+        defaultValue: 'sb_publishable_5OPtOnpiHoSinblYeGMaSQ_8xmguGzd',
+      );
 }
