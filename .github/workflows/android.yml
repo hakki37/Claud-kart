@@ -22,9 +22,9 @@ jobs:
           from pathlib import Path
           p = Path('android/app/src/main/AndroidManifest.xml')
           s = p.read_text()
-          permission = '<uses-permission android:name="android.permission.INTERNET" />'
-          if permission not in s:
-              s = s.replace('<manifest ', '<manifest ' + permission, 1)
+          permission = '    <uses-permission android:name="android.permission.INTERNET" />\n'
+          if permission.strip() not in s:
+              s = s.replace('    <application', permission + '    <application', 1)
               p.write_text(s)
           print(p.read_text())
           PY
