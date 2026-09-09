@@ -21,6 +21,8 @@ jobs:
           cp main.dart lib/main.dart
           cp config.dart lib/config.dart
           flutter create --platforms=android .
+      - name: Apply reference homepage UI
+        run: python3 scripts/reference_home_ui.py
       - name: Dependencies
         run: flutter pub get
       - name: Build APK
